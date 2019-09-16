@@ -15,6 +15,8 @@
             <button type="submit">입력!</button>
         </form>
         <div>{{result}}</div>
+        <div>정답 횟수 : {{correct}}</div>
+        <div>오답 횟수 : {{wrong}}</div>
     </div>
 </body>
 <script>
@@ -23,7 +25,9 @@
         data : {
             word:'사과',
             result:'',
-            value:''
+            value:'',
+            correct:0,
+            wrong:0
         },
         methods:{
             onSubmitForm(e){
@@ -33,10 +37,12 @@
                     this.word = this.value;
                     this.value = '';
                     this.$refs.answer.focus();
+                    this.correct++;
                 } else{
                     this.result = '땡';
                     this.value = '';
-                    this.$ref.answer.focus();
+                    this.$refs.answer.focus();
+                    this.wrong++;
                 }
             },
         },
